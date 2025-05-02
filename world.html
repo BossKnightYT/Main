@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>The World Below</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="world">
+
+  <div id="content-wrapper">
+<nav class="navbar"><ul class="menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="writing.html">Writing</a></li>
+<li><a href="artwork.html">Artwork</a></li>
+<li class="dropdown">
+  <a href="world.html" class="dropbtn">The World Below</a>
+  <ul class="dropdown-content">
+    <li>
+      <img src="images/twbdidcov.png" alt="cover" width="75"><a href="eps.html">Egotists Paper Skin (EPS)</a></li>
+    <li>
+      <img src="images/twbdidcov.png" alt="cover" width="75"><a href="did.html">Destroyed in Distraught (DiD)</a></li>
+    <li>
+      <img src="images/twbdidcov.png" alt="cover" width="75"><a href="aam.html">Apathetic and Melancholy (AaM)</a></li>
+  </ul>
+</li>
+</ul></nav>
+
+<h1>The World Below</h1>
+
+<p>Welcome to <em>The World Below</em>, the setting for my story. [Introductory exposition goes here...]</p>
+<p><em>Future comics/animations coming soon!</em></p>
+<ul>
+  <li><a href="eps.html">Egotists Paper Skin (EPS)</a></li>
+  <li><a href="did.html">Destroyed in Distraught (DiD)</a></li>
+  <li><a href="aam.html">Apathetic and Melancholy (AaM)</a></li>
+</ul>
+
+<div class="counter">
+  <img src="https://profile-counter.glitch.me/BOSSKNIGHT_t/count.svg" alt="Visitor Count">
+</div>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.dropbtn');
+    const dropdown = document.querySelector('.dropdown-content');
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+    document.addEventListener('click', e => {
+      if (!btn.contains(e.target)) dropdown.style.display = 'none';
+    });
+  });
+  </script>
+
+  </div>
+  
+</body>
+</html>
