@@ -63,7 +63,7 @@ a:hover {
   margin: 20px;
 }
 
-/* Wrapper for centering content with a transparent border to reveal background */
+/* Wrapper for centering content with a transparent border to show off hte purty background */
 #content-wrapper {
   background: rgba(15, 1, 1, 0.9);
   border: 10px solid transparent;
