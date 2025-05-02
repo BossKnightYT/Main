@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="images/herb_ico.png">
+  <meta charset="UTF-8">
+  <title>Shhhhhh...</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+  <body class="pw">
+
+    <div id="content-wrapper">
+  <nav class="navbar"><ul class="menu">
+    <li><a href="index.html">Home</a></li>
+  </ul></nav>
+
+  <center><h1>LogIn</h1>
+
+  <form name="loginscreen">
+    Username
+   <br><input type="text" name="q1"><br></br>
+
+   Password
+  <br><input type="text" name="q2"><br></br>
+
+
+  <input type="button" value="submit" onclick="myfun()">
+</form>
+</center>
+
+
+<script type="text/javascript">
+
+      function myfun(){
+        var v1 = document.getElementsByName('q1')[0].value;
+        var v2 = document.getElementsByName('q2')[0].value;
+        
+        var score=0;
+        
+        if(v1=="OliverP"){
+                score++;
+        }
+        if(v2=="GuyverLover420"){
+                score++;
+        }
+        
+        if (score == 1) {
+            alert("Welcome!");
+            window.location.href = 'secret.html';
+        } 
+        else {
+            alert("Incorrect, try again!");
+        }
+        
+        
+      }
+    </script>
+
+
+    </div>
+  </body>
+</html>

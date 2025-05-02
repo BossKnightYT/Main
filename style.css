@@ -3,7 +3,7 @@ body {
   background: url("images/star-blur.gif") repeat;
   background-color: #000;
   font-family: Tahoma, Verdana, sans-serif;
-  color: #f33;
+  color: rgb(77, 16, 16);
   margin: 0;
   padding: 0;
 }
@@ -81,11 +81,23 @@ a:hover {
   box-sizing: border-box;
 }
 
+
+
+
 /* World Below pages background */
 body.world {
-  background: url("images/starbg.gif") repeat !important;
+  background: url("images/starbg_anim.gif") repeat !important;
 }
 /* Artwork pages background */
 body.artwork {
-  background: url("images/starbg_art.gif") repeat !important;
+  background: url("images/spacebg_art.gif") repeat !important;
 }
+/* secret pages background */
+body.locked {
+  background: url("images/locked_bg.gif") repeat !important;
+}
+/* pw pages background */
+body.pw {
+  background: rgb(0, 0, 0);
+}
+
