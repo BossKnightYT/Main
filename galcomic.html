@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link id="favicon" rel="icon" href="images/Icon/herbert_ico.png" type="image/png">
+  
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Comic Viewer</title>
   <link rel="stylesheet" href="style.css">
@@ -24,7 +26,7 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 50%;          /* left half / right half of the image */
+      width: 50%; 
       background: transparent;
       border: none;
       cursor: pointer;
@@ -62,33 +64,43 @@
 
     <hr class="dashed">
     <div style="text-align:center;">
-      <button id="prev-btn">Prev</button>
-      <button id="next-btn">Next</button>
+      <button id="prev">Prev</button>
+      <button id="next">Next</button> were broken, Sorry! just click the image on the left or right to move through the comic!
     </div>
   </div>
 
   <script>
-    const imgEl   = document.getElementById('comic');
-    const params  = new URLSearchParams(location.search);
-    const folder  = params.get('folder') || 'comicA';
-    let   pageNum = parseInt(params.get('page')) || 1;
+
+const imgEl = document.getElementById('comic');
+    /* folder */
+    const params = new URLSearchParams(location.search);
+    const folder = params.get('folder') || 'comicA';
+    let pageNum = parseInt(params.get('page')) || 1;
 
     function updateImage() {
       const pageStr = String(pageNum).padStart(2,'0');
-      imgEl.src     = `${folder}/${pageStr}.png`;
-      history.replaceState(null, '', `?folder=${folder}&page=${pageStr}`);
+      imgEl.src = `${folder}/${pageStr}.png`;
+      history.replaceState(null,'',`?folder=${folder}&page=${pageStr}`);
     }
 
-    // now these attach perfectly to just the image:
-    document.querySelector('.lbtn').onclick = () => { if (pageNum>1) pageNum--; updateImage(); };
-    document.querySelector('.rbtn').onclick = () => { pageNum++; updateImage(); };
+    function updateFavicon(folder) {
+      const defaultF = 'images/Icon/herbert_ico.png';
+      const tryF = `${folder}/favicon.png`;
+      const linkEl = document.getElementById('favicon');
+      const tester = new Image();
+      tester.onload  = () => linkEl.href = tryF;
+      tester.onerror = () => linkEl.href = defaultF;
+      tester.src     = tryF;
+    }
 
-    // bottom navigation (IDs renamed to avoid collision)
-    document.getElementById('prev-btn').onclick = () => { if (pageNum>1) pageNum--; updateImage(); };
-    document.getElementById('next-btn').onclick = () => { pageNum++; updateImage(); };
+    document.getElementById('next').onclick = () => { pageNum++; updateImage(); updateFavicon(folder); };
+    document.getElementById('prev').onclick = () => { if(pageNum>1) pageNum--; updateImage(); updateFavicon(folder); };
 
-    imgEl.onerror = () => { pageNum = 1; updateImage(); };
+    imgEl.onerror = () => { pageNum = 1; updateImage(); updateFavicon(folder); };
+
     updateImage();
+    updateFavicon(folder);
+
   </script>
 </body>
 </html>
