@@ -74,7 +74,7 @@
 const imgEl = document.getElementById('comic');
     /* folder */
     const params = new URLSearchParams(location.search);
-    const folder = params.get('folder') || 'comicA';
+    const folder = params.get('folder') || 'gallery/comics/debug';
     let pageNum = parseInt(params.get('page')) || 1;
 
     function updateImage() {
