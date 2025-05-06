@@ -1,110 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-</head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Comic Viewer</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    #comic { max-width: 100%; display: block; margin: 0 auto; }
-    button { margin: 1em; }
+
+    .img-container {
+      position: relative;
+      width: 60%;          
+      margin: 0 auto;     
+    }
+    .img-container img.responsive {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    .img-container .lbtn,
+    .img-container .rbtn {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;          /* left half / right half of the image */
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .img-container .lbtn { left: 0; }
+    .img-container .rbtn { right: 0; }
+
     
-    .container .lbtn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-            transform: translate(-150%, -23%);
-            -ms-transform: translate(-150%, -23%);
-        background-color: rgba(255, 0, 0, 0);
-        color: rgba(255, 255, 255, 0);
-        font-size: 16px;
-        padding: 450px 95px;
-        border: none;
-        cursor: pointer;
-        text-align: center;
-        }
-    .container .rbtn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-            transform: translate(25%, -23%);
-            -ms-transform: translate(25%, -23%);
-
-        background-color: rgba(0, 0, 0, 0);
-        color: rgba(255, 255, 255, 0);
-        font-size: 16px;
-        padding: 450px 95px;
-        border: none;
-        cursor: pointer;
-        text-align: center;
-        }
-
-        .responsive {
-            width: 60%;
-            height: 100%;
-            }
+    @media (max-width: 600px) {
+      .img-container {
+        width: 100%; 
+      }
+    }
   </style>
 </head>
 <body>
 
-<div id="content-wrapper" class="container">
+  <div id="content-wrapper" class="container">
+            <nav class="navbar"><ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="artwork.html">Artwork</a></li>
+                <li><a href="world.html">The World Below</a></li>
+            </ul></nav>
+    <center><h1>Comic Viewer</h1></center>
+    <hr class="dashed">
 
-    <nav class="navbar"><ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="writing.html">Writing</a></li>
-        <li><a href="artwork.html">Artwork</a></li>
-        <li><a href="world.html">The World Below</a></li>
-      </ul></nav>
-    
-      <center><h1>Comic Viewer</h1></center>
-      <hr class="dashed">
-        <img id="comic" alt="Comic page" class="responsive" style="width: 60%;"> 
-            <button id="prev" class="lbtn">Button</button>
-            <button id="next" class="rbtn">Button</button>  
-<hr class="dashed">
-        <div style="text-align:center;">
-                <button id="prev">Prev</button>
-                <button id="next">Next</button>
+    <!-- wrap ONLY the image & arrows in this new container, PLEASE -->
+    <div class="img-container">
+      <img id="comic" class="responsive" src="" alt="Comic page">
+      <button id="prev" class="lbtn" aria-label="Previous page"></button>
+      <button id="next" class="rbtn" aria-label="Next page"></button>
+    </div>
 
-            </div>
-        </div>
-</div>
-        <script>
-            const imgEl   = document.getElementById('comic');
-            const params  = new URLSearchParams(window.location.search);
-            // Grab the folder name (default to 'comicA' if missing)
-            const folder  = params.get('folder') || 'comicA';                   
-            // – URLSearchParams lets you parse ?key=val pairs :contentReference[oaicite:1]{index=1}
-            let   pageNum = parseInt(params.get('page')) || 1;
+    <hr class="dashed">
+    <div style="text-align:center;">
+      <button id="prev-btn">Prev</button>
+      <button id="next-btn">Next</button>
+    </div>
+  </div>
 
-            function updateImage() {
-            // Format page number as two digits, e.g. 1 → "01"
-            const pageStr = String(pageNum).padStart(2, '0');                
-            // – padStart pads a string to length 2 with leading zeros :contentReference[oaicite:2]{index=2}
-            imgEl.src = `${folder}/${pageStr}.png`;
-            // Reflect the new state in the URL (so bookmarking works)
-            const newUrl = `${location.pathname}?folder=${folder}&page=${pageStr}`;
-            history.replaceState(null, '', newUrl);
-            }
+  <script>
+    const imgEl   = document.getElementById('comic');
+    const params  = new URLSearchParams(location.search);
+    const folder  = params.get('folder') || 'comicA';
+    let   pageNum = parseInt(params.get('page')) || 1;
 
-            document.getElementById('next').addEventListener('click', () => {
-            pageNum++;
-            updateImage();
-            });
+    function updateImage() {
+      const pageStr = String(pageNum).padStart(2,'0');
+      imgEl.src     = `${folder}/${pageStr}.png`;
+      history.replaceState(null, '', `?folder=${folder}&page=${pageStr}`);
+    }
 
-            document.getElementById('prev').addEventListener('click', () => {
-            if (pageNum > 1) pageNum--;
-            updateImage();
-            });
+    // now these attach perfectly to just the image:
+    document.querySelector('.lbtn').onclick = () => { if (pageNum>1) pageNum--; updateImage(); };
+    document.querySelector('.rbtn').onclick = () => { pageNum++; updateImage(); };
 
-            imgEl.onerror = () => {
-            // when the browser cannot load the next image
-            pageNum = 1;      // wrap back to the first page
-            updateImage();    // try again
-            };
+    // bottom navigation (IDs renamed to avoid collision)
+    document.getElementById('prev-btn').onclick = () => { if (pageNum>1) pageNum--; updateImage(); };
+    document.getElementById('next-btn').onclick = () => { pageNum++; updateImage(); };
 
-            // Initial image load
-            updateImage();
-        </script>
+    imgEl.onerror = () => { pageNum = 1; updateImage(); };
+    updateImage();
+  </script>
 </body>
 </html>

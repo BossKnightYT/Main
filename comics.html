@@ -1,111 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
   <title>Comic Gallery</title>
   <link rel="stylesheet" href="comic.css">
-<style>
-     /* Shake IMages */
-.container:hover {
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
-  }
-  
-  @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
-
-    /* Clickable IMages */
-  .container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-}
-
-.container img {
-  width: 100%;
-  height: auto;
-}
-
-.container .btn {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0);
-  color: rgba(255, 255, 255, 0);
-  font-size: 16px;
-  padding: 172px 95px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-}
-
-.container .btn:hover {
-  background-color: rgba(255, 255, 255, 0.507);
-}
-
-
-  </style>
-  </head>
-  
-
-  <body>
-
-    <div id="content-wrapper">
-  <nav class="navbar"><ul class="menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="writing.html">Writing</a></li>
-    <li><a href="artwork.html">Artwork</a></li>
-    <li><a href="world.html">The World Below</a></li>
-  </ul></nav>
-
-  <h1>Comcis!!</h1>
-  <hr class="dashed">
- 
-<center>
-<div class="row">
-
-    <!-- Kill All boneHeads Issue 1 Written by NagaSake, Drawn by NagaSake-->
-    <div class="column">
-    <div class="container">
-        <button onclick="goTo('gallery/comics/kab1')" class="btn">Button</button>
-
-        <img src="gallery/comics/kab1/ico.png" alt="Kab Issue 1" style="width:75%;">
-        <div class="text-block">
-          <h4>KAB Issue1</h4>
-          <p>By: Nagasake|15 pages</p>
-        </div>
-    </div>
-    </div>
-    
-
-</div>
-</center>
-</div>
-
-    
-
-
-
-
-
-    </div>
-
-    <script>
-        // Redirect to galcomic.html with both folder and page parameters
-        function goTo(folder) {
-          // We start at page 01 by default
-          window.location.href = `galcomic.html?folder=${folder}&page=01`;  
-          // – use window.location.href to navigate in JS :contentReference[oaicite:0]{index=0}
+  <style>
+    /* Shake on hover (unchanged) */
+    .container:hover {
+      animation: shake 0.5s infinite;
+    }
+    @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
         }
-      </script>
-  </body>
+
+    /* Flex row for alignment */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 1em 0;
+    }
+    .column {
+      margin: 0.5em;
+    }
+
+    /* Comic tile container (desktop size) */
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 400px; /* desktop fixed width */
+    }
+    .container img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Invisible overlay button */
+    .container .btn {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Text banner at bottom */
+    .text-block {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 0.5em;
+      text-align: center;
+    }
+    .text-block h4 {
+      margin: 0;
+      font-size: 1.1em;
+    }
+    .text-block p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+
+    /* Mobile scaling */
+    @media screen and (max-width: 600px) {
+      .container {
+        max-width: 250px; /* smaller on mobile */
+      }
+      .text-block h4 {
+        font-size: 1rem;
+      }
+      .text-block p {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+    <div id="content-wrapper">
+        <nav class="navbar"><ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="writing.html">Writing</a></li>
+          <li><a href="artwork.html">Artwork</a></li>
+          <li><a href="world.html">The World Below</a></li>
+        </ul></nav>
+
+  <h1>Comics!!</h1>
+  <hr class="dashed">
+
+
+<center><h3>TWB Comics</h3></center>   
+  <hr class="dashed">
+
+  <div id="content-wrapper">
+    <div class="row">
+
+    =</div>
+</div>
+<center><h3>My Comics!!!</h3></center>   
+  <hr class="dashed">
+
+  <div id="content-wrapper">
+    <div class="row">
+
+</div>
+</div>
+<center><h3>Friends Comics!!!</h3></center>   
+    <hr class="dashed">
+    <div id="content-wrapper">
+        <div class="row">
+<!-- Copy me from here -->
+        <!-- Kill All BoneHeads by Naga Sake, Issue 1-->
+        <div class="column">
+        <div class="container">
+          <button onclick="goTo('gallery/comics/kab1')" class="btn" aria-label="View Kab Issue 1"></button>
+          <!-- Cover image -->
+          <img src="gallery/comics/kab1/ico.png" alt="Kab Issue 1">
+
+          <!-- Banner & description -->
+          <div class="text-block">
+            <h4>KAB Issue 1</h4>
+            <p>By: NagaSake | 15 pages</p>
+          </div>
+        </div>
+        </div>
+<!-- to here to add more comics -->
+      
+
+
+
+    </div>
+  </div>
+</div>
+  <script>
+    function goTo(folder) {
+      window.location.href = `galcomic.html?folder=${folder}&page=01`;
+    }
+  </script>
+</body>
 </html>
