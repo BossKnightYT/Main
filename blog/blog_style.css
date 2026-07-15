@@ -1,0 +1,153 @@
+
+body {
+  background: url("images/star-blur.gif") repeat;
+  background-color: #000;
+  font-family: Tahoma, Verdana, sans-serif;
+  color: rgb(177, 53, 171);
+  margin: 0;
+  padding: 0;
+}
+td {
+  color: rgba(255, 255, 255)
+}
+h1 {
+  color: rgb(172, 56, 152);
+  margin: 00px;
+}
+h3 {
+  color: rgb(255, 0, 0);
+  margin: 0px;
+}
+h4 {
+  color: rgb(243, 181, 255);
+  margin: 0px;
+}
+p {
+  color: rgb(0, 0, 0);
+  text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+}
+
+p, ul, li {
+  margin: 20px;
+  line-height: 1.4;
+
+}
+a {
+  color: rgb(145, 59, 59);
+  text-decoration: underline;
+}
+a:hover {
+  color: #ffa;
+}
+.navbar {
+  background-color: rgb(255, 194, 240);
+  padding: 10px;
+  font-size: 14px;
+}
+.menu {
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.menu li {
+  display: inline-block;
+  position: relative;
+}
+.menu li a {
+  color: rgb(187, 121, 178);
+  text-decoration: none;
+  padding: 8px 12px;
+}
+.menu li a:hover {
+  background-color: rgb(133, 32, 128);
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(207, 76, 219);
+  min-width: 150px;
+  z-index: 1000;
+}
+.dropdown-content li a {
+  display: block;
+  color: rgb(129, 6, 129);
+  padding: 5px 10px;
+}
+.cutsey {
+  display: inline-block;
+  background-color: rgb(255, 165, 234);
+  padding: 5px 10px;
+  border-radius: 25px;
+
+}
+#cutsey {
+  display: inline-block;
+  background-color: rgb(235, 143, 243);
+  padding: 10px 25px;
+  margin: 0px auto;
+  border-radius: 15px;
+
+}
+.dropbtn {
+  cursor: pointer;
+}
+.counter img {
+  vertical-align: bottom;
+  margin: 20px;
+}
+
+/* Wrapper for centering content with a transparent border to show off hte purty background */
+#content-wrapper {
+  background: rgba(189, 88, 167, 0.9);
+  border: 10px solid transparent;
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 20px;
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+
+#content-wrapper-innie {
+  background: rgba(189, 88, 167, 0.9);
+  border: 3px solid transparent;
+  margin: 10px auto;
+  max-width: 1000px;
+  padding: 20px;
+  border-radius: 25px;
+  box-sizing: border-box;
+
+  color: white;
+  text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+}
+
+table {
+  background: rgba(252, 85, 216, 0.9);
+  border: 8px solid transparent;
+  margin: 25px left;
+  min-width: 950px;
+  max-width: 1000px;
+  padding: 5px;
+  border-radius: 15px;
+  box-sizing: border-box;
+
+}
+
+
+
+
+/* World Below pages background */
+body.world {
+  background: url("images/starbg_anim.gif") repeat !important;
+}
+/* Artwork pages background */
+body.artwork {
+  background: url("images/spacebg_art.gif") repeat !important;
+}
+/* secret pages background */
+body.locked {
+  background: url("images/locked_bg.gif") repeat !important;
+}
+/* pw pages background */
+body.pw {
+  background: rgb(0, 0, 0);
+}
+

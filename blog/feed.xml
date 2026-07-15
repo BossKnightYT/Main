@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0">
+
+<channel>
+
+<title>My Blog</title>
+
+<link>https://BossKnightYT.github.io/main/</link>
+
+<description>My updates</description>
+
+
+
+<item>
+
+<title>This is a template</title>
+
+<link>
+https://BossKnightYT.github.io/main/blog/posts/test_blog.html
+</link>
+
+<description>
+if your seeing this i forgot to write the summary
+</description>
+
+<pubDate>
+2026-07-15
+</pubDate>
+
+</item>
+
+
+
+<item>
+
+<title>This is a template 2</title>
+
+<link>
+https://BossKnightYT.github.io/main/blog/posts/test_blog_copy.html
+</link>
+
+<description>
+if your seeing this i forgot to write the summary
+</description>
+
+<pubDate>
+1997-07-15
+</pubDate>
+
+</item>
+
+
+
+</channel>
+
+</rss>
+
