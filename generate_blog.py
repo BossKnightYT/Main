@@ -88,6 +88,8 @@ for post in posts:
 <a href="posts/{post["file"]}">
 {post["title"]}
 </a>
+<br>
+{post["description"]}
 </td>
 
 </tr>
@@ -308,7 +310,7 @@ rss = """<?xml version="1.0" encoding="UTF-8"?>
 
 <title>My Blog</title>
 
-<link>https://BossKnightYT.github.io/main/</link>
+<link>https://BossKnightYT.github.io/Main/</link>
 
 <description>My updates</description>
 
@@ -324,7 +326,7 @@ for post in posts:
 <title>{post["title"]}</title>
 
 <link>
-https://BossKnightYT.github.io/main/blog/posts/{post["file"]}
+https://BossKnightYT.github.io/Main/blog/posts/{post["file"]}
 </link>
 
 <description>
